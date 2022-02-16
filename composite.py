@@ -20,18 +20,9 @@ schema_doc = [
             "@type"     : "Lexical",
             "@fields"   : [ "ark" ]
         },
-        "components"    :
+        "contains"      :
         {
-            "@type"     : "Optional",
-            "@class"    : "Components"
-        }
-    },
-    {
-        "@id"           : "Components",
-        "@type"         : "Class",
-        "members"       :
-        {
-            "@type"     : "List",
+            "@type"     : "Set",
             "@class"    : "Composite"
         }
     }
@@ -41,33 +32,25 @@ instance_doc = [
         {
             "@type"     : "Composite",
             "name"      : "A",
-            "ark"       : "ark:/12345/A",
-            "components": 
-            {
-                "@type" : "Components",
-                "members": 
-                [
-                    {
-                        "@type"     : "Composite",
-                        "name"      : "B",
-                        "ark"       : "ark:/12345/B",
-                        "components":
+            "ark"       : "A",
+            "contains": 
+            [
+                {
+                    "@type"     : "Composite",
+                    "name"      : "B",
+                    "ark"       : "B",
+                    "contains"  :
+                    [
                         {
-                            "@type" : "Components",
-                            "members": 
-                            [
-                                {
-                                    "@type" : "Composite",
-                                    "name"  : "C",
-                                    "ark"   : "ark:/12345/C"
-                                }
-                            ]
+                                "@type" : "Composite",
+                                "name"  : "C",
+                                "ark"   : "C"
                         }
-                    }
-                ]
-            }
+                    ]
+                }
+            ]
         }
-        ]
+    ]
 
 client = WOQLClient("http://127.0.0.1:6363/")
 client.connect()

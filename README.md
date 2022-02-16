@@ -5,6 +5,33 @@ Defines a Manuscript with a creator that is a Person and a `sdPublisher` that is
 an Organisation.
 Definition of these classes follows their definition in schema.org
 
+### composite.py 
+A Composite has an `ark` property and contains zero or more Composites. 
+```
+    {
+        "@id"           : "Composite",
+        "@type"         : "Class",
+        "name"          : "xsd:string",
+        "ark"           : "xsd:string",
+        "@key"          :
+        {
+            "@type"     : "Lexical",
+            "@fields"   : [ "ark" ]
+        },
+        "contains"      :
+        {
+            "@type"     : "Set",
+            "@class"    : "Composite"
+        }
+    }
+```
+In composite.py, A contains B which contains C.
+```
+python composite.py 
+{'@id': 'Composite/A', '@type': 'Composite', 'ark': 'A', 'contains': ['Composite/B'], 'name': 'A'}
+{'@id': 'Composite/B', '@type': 'Composite', 'ark': 'B', 'contains': ['Composite/C'], 'name': 'B'}
+{'@id': 'Composite/C', '@type': 'Composite', 'ark': 'C', 'name': 'C'}
+```
 ### Notes
 
 This is how terminusdb states the basic unit of specification:
