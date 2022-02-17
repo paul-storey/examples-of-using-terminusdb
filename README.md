@@ -120,6 +120,27 @@ This returns a sequence containing a single document:
 }
 ```
 
+### References to existing subdocuments
+It is possible to add documents that have connections to documents that have already been added
+without having to entirely repeat the definition of the latter.
+In [referencing_an_existing_subdocument.py](referencing_an_existing_subdocument.py), the graph
+is updated twice, with the second updating being a Composite that contains an item
+that has already been added (`Composite/B`). This second update only refers to `Composite/B` by its 
+`@id`:
+```
+D_contains_B = [
+    {
+        "@type": "Composite",
+        "name": "D",
+        "ark": "D",
+        "contains":
+            [
+                "Composite/B"
+            ]
+    }
+]
+```
+
 ### Miscellaneous Notes
 
 This is how terminusdb states the basic unit of specification:
