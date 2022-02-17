@@ -5,6 +5,9 @@ Python 3.8, and
 ```
 pip install terminusdb-client
 ```
+Each example assumes that a terminusdb server process is already running on `127.0.0.1:6363`
+Refer to [this guide on installing and running TerminusDB using Docker](https://terminusdb.com/docs/index/terminusdb/install/install-as-docker-container#install-steps)
+Each example creates its own database and tears it down.
 ### define_a_schema_and_add_a_doc.py
 Defines a Manuscript with a creator that is a Person and a `sdPublisher` that is 
 an Organisation.
@@ -99,9 +102,25 @@ This query returns:
     'transaction_retry_count': 0
 }
 ```
+### Using WOQLClient.query_document
+For simple queries, `WOQLClient.query_document` may be easier than using WOQL. 
+See [using_query_document.py](using_query_document.py) for an example. In this example, the query 
+is expressed as follows:
+```
+documents = client.query_document({'@type': 'Composite', 'name': 'B'})
+```
+Note that `@type` is not optional.
+This returns a sequence containing a single document:
+```
+{   '@id': 'Composite/B',
+    '@type': 'Composite',
+    'ark': 'B',
+    'contains': ['Composite/C'],
+    'name': 'B'
+}
+```
 
-
-### Notes
+### Miscellaneous Notes
 
 This is how terminusdb states the basic unit of specification:
 ```
