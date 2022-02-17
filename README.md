@@ -32,6 +32,37 @@ python composite.py
 {'@id': 'Composite/B', '@type': 'Composite', 'ark': 'B', 'contains': ['Composite/C'], 'name': 'B'}
 {'@id': 'Composite/C', '@type': 'Composite', 'ark': 'C', 'name': 'C'}
 ```
+
+### When a subdocument with the same ID occurs multiple times
+Some aspects of the behaviour of terminusdb are illustrated by `when_the_subdoc_already_exists.py`
+`B` is added twice, but is only listed as occurring once:
+```
+{'@id': 'Composite/A', '@type': 'Composite', 'ark': 'A', 'contains': ['Composite/B'], 'name': 'A'}
+{'@id': 'Composite/B', '@type': 'Composite', 'ark': 'B', 'contains': ['Composite/C'], 'name': 'B'}
+{'@id': 'Composite/C', '@type': 'Composite', 'ark': 'C', 'name': 'C'}
+{'@id': 'Composite/D', '@type': 'Composite', 'ark': 'D', 'contains': ['Composite/B'], 'name': 'D'}
+```
+However, if the second occurrence of `B` differs from the first for one of other, non-identifying
+properties (for example, changing the `name` of the second `B` to `b`, then an exception is raised:
+```
+terminusdb_client.errors.DatabaseError: Schema check failure
+{
+    "@type": "api:ReplaceDocumentErrorResponse",
+    "api:error": {
+        "@type": "api:SchemaCheckFailure",
+        "api:witnesses": [
+            {
+                "@type": "instance_not_cardinality_one",
+                "class": "http://www.w3.org/2001/XMLSchema#string",
+                "instance": "bodleian://famous/data/Composite/B",
+                "predicate": "http://bodleian.ox.ac.uk#name"
+            }
+        ]
+    },
+    "api:message": "Schema check failure",
+    "api:status": "api:failure"
+}
+```
 ### Notes
 
 This is how terminusdb states the basic unit of specification:
