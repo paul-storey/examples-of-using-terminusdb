@@ -14,7 +14,7 @@ an Organisation.
 Definition of these classes follows their definition in schema.org
 
 ### composite.py 
-A Composite has an `ark` property and contains zero or more Composites. 
+A Composite is identified by its `ark` property and contains zero or more Composites. 
 ```
     {
         "@id"           : "Composite",
