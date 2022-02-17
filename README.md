@@ -1,5 +1,10 @@
 ## Examples of using TerminusDB
 
+### Prerequisistes
+Python 3.8, and
+```
+pip install terminusdb-client
+```
 ### define_a_schema_and_add_a_doc.py
 Defines a Manuscript with a creator that is a Person and a `sdPublisher` that is 
 an Organisation.
