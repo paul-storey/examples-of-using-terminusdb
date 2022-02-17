@@ -63,6 +63,39 @@ terminusdb_client.errors.DatabaseError: Schema check failure
     "api:status": "api:failure"
 }
 ```
+### Trivial WOQL query
+`trivial_woql_query.py` is a trivial example of using the Web Object Query Language (WOQL).
+I'm struggling to find good resources on using WOQL. 
+There is [this blog](https://terminusdb.com/blog/the-power-of-web-object-query-language/)
+and there is a [single page tutorial](https://terminusdb.com/docs/index/terminusx-db/how-to-guides/perform-graph-queries)
+The query is constructed as follows
+```
+query = WOQLQuery()\
+        .triple("v:Subject", "name", {"@type": "xsd:string", "@value": "B"})\
+        .read_document("v:Subject", "v:Full Record")
+```
+Notes:
+- use of `v: Full Record` is inspired by the aforementioned blog. I am not aware it is otherwise documented.
+- Using the simpler `triple("v:Subject", "name", "B")` would have been nice but didn't work for me.
+
+This query returns:
+```
+{   '@type': 'api:WoqlResponse',
+    'api:status': 'api:success',
+    'api:variable_names': ['Subject', 'Full Record'],
+    'bindings': [   {   'Full Record': {   '@id': 'Composite/B',
+                                           '@type': 'Composite',
+                                           'ark': 'B',
+                                           'contains': ['Composite/C'],
+                                           'name': 'B'},
+                        'Subject': 'Composite/B'}],
+    'deletes': 0,
+    'inserts': 0,
+    'transaction_retry_count': 0
+}
+```
+
+
 ### Notes
 
 This is how terminusdb states the basic unit of specification:
