@@ -8,12 +8,12 @@ pip install terminusdb-client
 Each example assumes that a terminusdb server process is already running on `127.0.0.1:6363`
 Refer to [this guide on installing and running TerminusDB using Docker](https://terminusdb.com/docs/index/terminusdb/install/install-as-docker-container#install-steps)
 Each example creates its own database and tears it down.
-### define_a_schema_and_add_a_doc.py
+### [define_a_schema_and_add_a_doc.py](define_a_schema_and_add_a_doc.py)
 Defines a Manuscript with a creator that is a Person and a `sdPublisher` that is 
 an Organisation.
 Definition of these classes follows their definition in schema.org
 
-### composite.py 
+### [composite.py](composite.py)
 A Composite is identified by its `ark` property and contains zero or more Composites. 
 ```
     {
@@ -42,7 +42,7 @@ python composite.py
 ```
 
 ### When a subdocument with the same ID occurs multiple times
-Some aspects of the behaviour of terminusdb are illustrated by `when_the_subdoc_already_exists.py`
+Some aspects of the behaviour of terminusdb are illustrated by [when_the_subdoc_already_exists.py](when_the_subdoc_already_exists.py)
 `B` is added twice, but is only listed as occurring once:
 ```
 {'@id': 'Composite/A', '@type': 'Composite', 'ark': 'A', 'contains': ['Composite/B'], 'name': 'A'}
@@ -72,7 +72,7 @@ terminusdb_client.errors.DatabaseError: Schema check failure
 }
 ```
 ### Trivial WOQL query
-`trivial_woql_query.py` is a trivial example of using the Web Object Query Language (WOQL).
+[trivial_woql_query.py](trivial_woql_query.py) is a trivial example of using the Web Object Query Language (WOQL).
 I'm struggling to find good resources on using WOQL. 
 There is [this blog](https://terminusdb.com/blog/the-power-of-web-object-query-language/)
 and there is a [single page tutorial](https://terminusdb.com/docs/index/terminusx-db/how-to-guides/perform-graph-queries)
