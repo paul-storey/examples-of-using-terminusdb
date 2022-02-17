@@ -50,7 +50,7 @@ Some aspects of the behaviour of terminusdb are illustrated by [when_the_subdoc_
 {'@id': 'Composite/C', '@type': 'Composite', 'ark': 'C', 'name': 'C'}
 {'@id': 'Composite/D', '@type': 'Composite', 'ark': 'D', 'contains': ['Composite/B'], 'name': 'D'}
 ```
-However, if the second occurrence of `B` differs from the first for one of other, non-identifying
+However, if the second occurrence of `B` differs from the first in respect of one or other of its non-identifying
 properties (for example, changing the `name` of the second `B` to `b`, then an exception is raised:
 ```
 terminusdb_client.errors.DatabaseError: Schema check failure
