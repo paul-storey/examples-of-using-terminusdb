@@ -1,8 +1,9 @@
 """RDF collections in TerminusDB
 
 See https://www.w3.org/TR/rdf-primer/#collections
+
+Also includes an example of using TerminusDB WOQLQuery.path
 """
-from pprint import PrettyPrinter
 from terminusdb_client import WOQLClient, WOQLQuery
 from terminusdb_client.woqlschema import WOQLSchema
 
@@ -58,6 +59,13 @@ def query_and_return(client, subj, pred, obj) -> str:
 def end_of_list(list_id: str) -> bool:
     return list_id.endswith("nil")
 
+def find_bowl_containing(client, fruit: str) -> None:
+    result = client.query(WOQLQuery().woql_and(
+        WOQLQuery().triple("v:ID", "rdf:type", "@schema:Bowl"),
+        WOQLQuery().triple("v:ID", "contains", "v:Cons"),
+        WOQLQuery().path("v:Cons", "rdf:rest*, rdf:first", f"@schema:Fruit/{fruit}")))
+    return [r.get("ID") for r in result.get("bindings")] 
+
 client = WOQLClient("http://127.0.0.1:6363/")
 client.connect()
 try:
@@ -72,9 +80,10 @@ try:
         fruit = query_and_return(client, list_id, "rdf:first", "v:id")
         print(fruit)
         list_id = query_and_return(client, list_id, "rdf:rest", "v:id")
+    for fruit in ["apple", "banana", "pear", "orange"]:
+        print("Containing", fruit, find_bowl_containing(client, fruit))
 finally:
     print(f"Deleting database {db_name}")
     client.delete_database(dbid=db_name, team="admin")
     client.close()
-
 
