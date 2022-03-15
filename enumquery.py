@@ -29,7 +29,7 @@ schema_doc = [
             },
         "text": "xsd:string",
         "lang": {
-                "@type": "List",
+                "@type": "Set",
                 "@class": "TextLang",
         },
     },
@@ -61,7 +61,8 @@ try:
         print(d)
     runquery(client, "v:subj", "lang", "v:obj")
     runquery(client, "v:subj", "lang", "fr")
-    runquery(client, "v:subj", "lang", "http://xyz#TextLang_fr")
+    runquery(client, "v:subj", "lang", "http://xyz#TextLang/fr")
+    runquery(client, "v:subj", "lang", "@schema:TextLang/fr")
 finally:
     print(f"Deleting database {db_name}")
     client.delete_database(dbid=db_name, team="admin")
