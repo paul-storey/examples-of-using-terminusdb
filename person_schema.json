@@ -1,0 +1,25 @@
+[ 
+    {   
+        "@type": "@context",
+        "@schema": "http://xyz#",
+        "@base": "base://path/",
+        "xsd": "http://www.w3.org/2001/XMLSchema#"
+    },
+    {
+        "@id": "Person",
+        "@type": "Class",
+        "@base": "Person_",
+        "id": "xsd:string",
+        "@key": 
+             {
+                 "@type": "Lexical",
+                 "@fields": [ "id" ]
+             },
+        "names":
+             {
+                 "@type": "Set",
+                 "@class": "xsd:string"
+             }
+    }
+]
+
