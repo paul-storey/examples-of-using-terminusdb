@@ -37,7 +37,7 @@ curl --user admin:root \
     --header 'Content-Type: application/json' \
     --header 'X-HTTP-Method-Override: GET' \
     -X POST \
-    --data '{ "@rdf:type": "Person", "count": 10, "query": { "id": "123" } }' \
+    --data '{ "query": { "@type": "Person", "id": "123" } }' \
     http://localhost:6363/api/document/admin/db_test
 
 # Delete a database
