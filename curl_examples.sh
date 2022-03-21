@@ -43,3 +43,5 @@ curl --user admin:root \
 # Delete a database
 curl --user admin:root -X DELETE http://127.0.0.1:6363/api/db/admin/db_test
 
+# Get the system graph
+curl --user admin:root  http://127.0.0.1:6363/api/document/_system
