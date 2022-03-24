@@ -18,7 +18,7 @@ is used as a predicate.
 
 Finally this example illustrates how update_document
 overwrites a document if it is already present.
-Thus get_document becomes an important way of
+Thus has_doc becomes an important way of
 testing for the presence of a document in order
 to avoid overwriting it.
 """
