@@ -14,6 +14,11 @@ Demonstrates:
 * triples can be used to add properties to a document
 * those triples are lost if the document is updated
 
+### [one_way.py](one_way.py)
+Demonstrates:
+* it is possible to query 'upstream'
+* using WOQL with variables
+
 ### [define_a_schema_and_add_a_doc.py](define_a_schema_and_add_a_doc.py)
 Defines a Manuscript with a creator that is a Person and a `sdPublisher` that is 
 an Organisation.
