@@ -8,6 +8,12 @@ pip install terminusdb-client
 Each example assumes that a terminusdb server process is already running on `127.0.0.1:6363`
 Refer to [this guide on installing and running TerminusDB using Docker](https://terminusdb.com/docs/index/terminusdb/install/install-as-docker-container#install-steps)
 Each example creates its own database and tears it down.
+
+### [calling_people_names.py](calling_people_names.py)
+Demonstrates:
+* triples can be used to add properties to a document
+* those triples are lost if the document is updated
+
 ### [define_a_schema_and_add_a_doc.py](define_a_schema_and_add_a_doc.py)
 Defines a Manuscript with a creator that is a Person and a `sdPublisher` that is 
 an Organisation.
