@@ -21,6 +21,13 @@ overwrites a document if it is already present.
 Thus has_doc becomes an important way of
 testing for the presence of a document in order
 to avoid overwriting it.
+
+An earlier development version of this script used a 
+schema with a Name class. In this way, each name
+was its own document node in the graph. However
+it remained true that, when a person document
+got updated, its associations with name documents
+was lost.
 """
 from pprint import PrettyPrinter
 from terminusdb_client import WOQLClient, WOQLQuery
