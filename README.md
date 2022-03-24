@@ -19,6 +19,11 @@ Demonstrates:
 * it is possible to query 'upstream'
 * using WOQL with variables
 
+### [curl_examples.sh](curl_examples.sh)
+Note that this bash script also requires [person_schema.json](person_schema.json)
+Demonstrates
+* using the [TerminusDB document API](https://terminusdb.com/docs/index/terminusx-db/reference-guides/document-interface) and the [HTTP API](https://terminusdb.com/docs/index/terminusx-db/reference-guides/http-api)
+
 ### [define_a_schema_and_add_a_doc.py](define_a_schema_and_add_a_doc.py)
 Defines a Manuscript with a creator that is a Person and a `sdPublisher` that is 
 an Organisation.
