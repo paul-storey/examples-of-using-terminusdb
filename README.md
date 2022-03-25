@@ -19,6 +19,11 @@ Demonstrates:
 * it is possible to query 'upstream'
 * using WOQL with variables
 
+### [listquery.py](listquery.py)
+Demonstrates:
+* Programmatically using `rdf:first` and `rdf:rest` to traverse a list
+* Querying a list using `WOQLQuery.path()`
+
 ### [curl_examples.sh](curl_examples.sh)
 Note that this bash script also requires [person_schema.json](person_schema.json)
 Demonstrates
