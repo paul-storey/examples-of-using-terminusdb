@@ -24,6 +24,10 @@ Demonstrates:
 * Programmatically using `rdf:first` and `rdf:rest` to traverse a list
 * Querying a list using `WOQLQuery.path()`
 
+### [label_problem.py](label_problem.py)
+Demonstrates:
+* It is best to avoid using `label` as a schema property name
+
 ### [curl_examples.sh](curl_examples.sh)
 Note that this bash script also requires [person_schema.json](person_schema.json)
 Demonstrates
