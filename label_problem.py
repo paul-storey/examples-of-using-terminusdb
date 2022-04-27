@@ -1,4 +1,4 @@
-"""Reproduce issue with 'label' property
+"""label property needs to be qualified in queries
 
 """
 from terminusdb_client import WOQLClient, WOQLQuery
@@ -51,7 +51,8 @@ try:
         print(d)
     assert 1 == len(get_bindings("Person_Bob", "name", "v:Out"))
     assert 1 == len(get_bindings("Person_Bob", "badge", "v:Out"))
-    assert 1 == len(get_bindings("Person_Bob", "label", "v:Out"))
+    assert 0 == len(get_bindings("Person_Bob", "label", "v:Out"))
+    assert 1 == len(get_bindings("Person_Bob", "@schema:label", "v:Out"))
 finally:
     print(f"Deleting database {db_name}")
     client.delete_database(dbid=db_name, team="admin")
