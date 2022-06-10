@@ -9,6 +9,9 @@ Each example assumes that a terminusdb server process is already running on `127
 Refer to [this guide on installing and running TerminusDB using Docker](https://terminusdb.com/docs/index/terminusdb/install/install-as-docker-container#install-steps)
 Each example creates its own database and tears it down.
 
+### [query_using_regex.py](query_using_regex.py)
+Simple example of using a regular expression in a query
+
 ### [calling_people_names.py](calling_people_names.py)
 Demonstrates:
 * triples can be used to add properties to a document
