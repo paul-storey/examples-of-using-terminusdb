@@ -9,6 +9,10 @@ Each example assumes that a terminusdb server process is already running on `127
 Refer to [this guide on installing and running TerminusDB using Docker](https://terminusdb.com/docs/index/terminusdb/install/install-as-docker-container#install-steps)
 Each example creates its own database and tears it down.
 
+### [referenced_may_not_exist.py](referenced_may_not_exist.py)
+Demonstrates that it is possible to add a document that refers to another document
+that does not exist.
+
 ### [query_using_regex.py](query_using_regex.py)
 Simple example of using a regular expression in a query
 
