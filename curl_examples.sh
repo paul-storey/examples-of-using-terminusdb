@@ -12,7 +12,7 @@ curl --user admin:root --header "content-type: application/json" --data '{"label
     --data-binary @- -H 'Content-Type: application/json'
 
 # Get the schema
- curl --user admin:root http://localhost:6363/api/document/admin/db_test?graph_type=schema
+ curl --user admin:root "http://localhost:6363/api/document/admin/db_test&as_list=true?graph_type=schema"
 
 # Put a Person
 curl --user admin:root \
